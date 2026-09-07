@@ -1,1 +1,338 @@
 @import "tailwindcss";
+
+/* ============================================================
+   Tarihi Antep Çiğköfte · v3 tasarım sistemi
+   Renkler dükkândan ölçüldü: tabela yeşili #428522, oluklu tezgâh
+   turuncusu #DC612A, logo bordosu #7F0A20.
+   Tema: koyu yeşil sinematik zemin + krem içerik + turuncu vuruş.
+   ============================================================ */
+
+@theme {
+  /* Yeşil ailesi — sayfanın sinematik zemini */
+  --color-yesil-koyu: #1f4a10;
+  --color-yesil-orta: #2e6417;
+  --color-yesil: #428522;
+  --color-yesil-acik: #9bd26e;
+
+  /* Krem ailesi — içerik zeminleri ve koyu üstünde metin */
+  --color-krem: #fbf7ee;
+  --color-krem-koyu: #f2efe7;
+
+  /* Vuruşlar */
+  --color-turuncu: #dc612a;
+  --color-turuncu-koyu: #b8471a;
+  --color-turuncu-soluk: #f6d9c6;
+  --color-sari: #f7c92d;
+  --color-bordo: #7f0a20;
+
+  /* Metin */
+  --color-murekkep: #15200f;
+  /* İkincil metin: opaklıkla kısmak WCAG AA'yı düşürüyordu (krem/45 = 3.27).
+     Bu iki renk kendi zeminlerinde 4.5'in üstünde; hiyerarşi punto ve ağırlıkla kuruluyor. */
+  --color-soluk: #ccd6bd;        /* koyu yeşil zeminlerde */
+  --color-soluk-koyu: #656b5d;   /* krem zeminlerde */
+
+  /* Köşe sistemi: kart 20, alan 12, buton pill */
+  --radius-kart: 20px;
+  --radius-alan: 12px;
+
+  /* Gölgeler zemine boyanır, saf siyah yok */
+  --shadow-kart: 0 18px 44px -20px rgb(9 20 5 / 0.55), inset 0 1px 0 rgb(251 247 238 / 0.06);
+  --shadow-kaldir: 0 34px 80px -28px rgb(9 20 5 / 0.7);
+  --shadow-turuncu: 0 14px 38px -14px rgb(184 71 26 / 0.6);
+  --shadow-krem: 0 18px 44px -22px rgb(21 32 15 / 0.22);
+
+  /* Tipografi ölçeği */
+  --text-hero: clamp(2.05rem, 3.7vw, 3.35rem);
+  --text-hero--line-height: 0.94;
+  --text-hero--letter-spacing: -0.025em;
+  --text-h2: clamp(1.85rem, 3.1vw, 2.8rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.35rem, 2.1vw, 1.85rem);
+  --text-h3--line-height: 1.12;
+  --text-h3--letter-spacing: -0.015em;
+  --text-sayi: clamp(3.2rem, 8.5vw, 7.5rem);
+  --text-sayi--line-height: 0.88;
+  --text-sayi--letter-spacing: -0.03em;
+
+  --container-site: 78rem;
+  --ease-cikis: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* next/font değişkenlerine bağlanır; inline olmalı ki utility var()'ı okusun */
+@theme inline {
+  --font-display: var(--font-display-kaynak), "Trebuchet MS", system-ui, sans-serif;
+  --font-text: var(--font-text-kaynak), system-ui, -apple-system, sans-serif;
+}
+
+@custom-variant touch (@media (hover: none));
+@custom-variant nojs (html:not([data-js]) &);
+@custom-variant sahne-yedek (&:where([data-sahne-yedek="true"], [data-sahne-yedek="true"] *));
+
+/* ---------- taban ---------- */
+
+:root {
+  color-scheme: dark;
+  --zemin: var(--color-yesil-koyu);
+}
+
+html {
+  scroll-behavior: auto; /* Lenis yönetir */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--zemin);
+  color: var(--color-krem);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* hidden değil: sticky'yi bozar */
+  transition: background-color 700ms var(--ease-cikis);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-turuncu);
+  color: var(--color-murekkep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sari);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Kaydırma çubuğu koyu zeminle uyumlu */
+@supports (scrollbar-color: auto) {
+  html { scrollbar-color: var(--color-yesil) var(--color-yesil-koyu); }
+}
+
+/* ---------- Lenis ---------- */
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ---------- ilk ekran girişi (CSS, JS beklemez) ---------- */
+
+/* Katlamanın üstündeki giriş hareketleri JS ile değil burada sürülür. Sebep ölçülmüş:
+   `Reveal` sunucuda opacity:0 bastığı için en büyük öğe hidratlamaya kadar boyanmıyordu
+   (FCP 0,8 sn · LCP 4,7 sn). CSS animasyonu stil ayrıştırılınca başlar, paket inmesini beklemez. */
+@keyframes giris-suzul {
+  from { opacity: 0; transform: translateY(var(--giris-y, 26px)); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes giris-perde-yukari { from { clip-path: inset(100% 0% 0% 0%); } to { clip-path: inset(0% 0% 0% 0%); } }
+@keyframes giris-perde-sag    { from { clip-path: inset(0% 100% 0% 0%); } to { clip-path: inset(0% 0% 0% 0%); } }
+@keyframes giris-perde-sol    { from { clip-path: inset(0% 0% 0% 100%); } to { clip-path: inset(0% 0% 0% 0%); } }
+@keyframes giris-olcek        { from { transform: scale(1.14); } to { transform: none; } }
+
+[data-giris] {
+  animation: giris-suzul 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--giris-gecikme, 0s) both;
+}
+[data-giris-maske="yukari"] { animation: giris-perde-yukari 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--giris-gecikme, 0s) both; }
+[data-giris-maske="sag"]    { animation: giris-perde-sag    1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--giris-gecikme, 0s) both; }
+[data-giris-maske="sol"]    { animation: giris-perde-sol    1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--giris-gecikme, 0s) both; }
+[data-giris-olcek]          { animation: giris-olcek        1.4s  cubic-bezier(0.16, 1, 0.3, 1) var(--giris-gecikme, 0s) both; }
+
+/* ---------- JS yokken hiçbir şey gizli kalmaz ---------- */
+
+html:not([data-js]) [data-harita-il] { opacity: 1 !important; }
+
+html:not([data-js]) [data-reveal],
+html:not([data-js]) [data-maske],
+html:not([data-js]) [data-paralaks],
+html:not([data-js]) [data-tilt] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+/* ---------- hareket azaltma ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Hareket azaltma kararı CSS'te verilir: sunucu bunu bilemediği için bileşenler dal
+     değiştirmez, yalnız dönüşüm burada nötrlenir. */
+  [data-reveal], [data-maske], [data-paralaks], [data-tilt] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  /* CSS girişleri zaten `animation-duration` kuralıyla son karesine atlıyor; yine de
+     kalan bir kare için son durum yazılır. */
+  [data-giris], [data-giris-maske], [data-giris-olcek] {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}
+
+/* İkincil metin rengi bölümün zeminine göre belirlenir; bileşen hangi zeminde
+   olduğunu bilmek zorunda kalmaz. */
+[data-zemin="yesil-koyu"], [data-zemin="yesil-orta"] { --soluk: var(--color-soluk); }
+[data-zemin="krem"], [data-zemin="krem-koyu"] { --soluk: var(--color-soluk-koyu); }
+[data-zemin="turuncu"] { --soluk: var(--color-murekkep); }
+
+/* ---------- yardımcı sınıflar ---------- */
+
+/* Oluklu tezgâh dokusu (dükkândaki turuncu bant) */
+.oluklu {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-turuncu) 0 10px,
+    var(--color-turuncu-koyu) 10px 12px,
+    var(--color-turuncu) 12px 22px,
+    rgb(255 255 255 / 0.08) 22px 24px
+  );
+}
+
+/* Cam başlık çubuğu */
+.cam {
+  background-color: rgb(31 74 16 / 0.82);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+@supports not (backdrop-filter: blur(2px)) {
+  .cam { background-color: rgb(31 74 16 / 0.97); }
+}
+
+/* Tabular rakamlar sayaçlar için */
+.rakam { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* Şube haritası: şehir adları küçük ölçekte bile sınırların üstünde okunur. */
+.harita-il-yolu { transform-box: fill-box; transform-origin: center; }
+.harita-il-grup:hover .harita-il-yolu,
+.harita-il-grup:focus-visible .harita-il-yolu { filter: brightness(1.12); }
+.harita-il-etiket {
+  pointer-events: none;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  paint-order: stroke fill;
+  stroke: rgb(20 48 12 / 0.92);
+  stroke-width: 2.4px;
+  stroke-linejoin: round;
+  transition: fill 180ms ease, font-size 180ms ease, opacity 180ms ease;
+}
+.harita-il-etiket--acik { fill: var(--color-krem); }
+.harita-il-etiket--kapali { fill: rgb(251 247 238 / 0.58); font-weight: 600; }
+.harita-il-etiket--secili { fill: var(--color-murekkep); font-size: 9px; stroke: var(--color-sari); stroke-width: 3px; }
+.harita-il-grup:hover .harita-il-etiket,
+.harita-il-grup:focus-visible .harita-il-etiket { fill: var(--color-sari); font-size: 8.5px; }
+@media (min-width: 1440px) {
+  .harita-il-etiket { font-size: 7.7px; }
+  .harita-il-etiket--secili { font-size: 10px; }
+}
+
+/* İnce doku: koyu yüzeylerin ölü siyah durmaması için */
+.tane::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgb(251 247 238 / 0.045) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Kayan şerit: iki özdeş sıra, biri diğerinin yerini alır */
+@keyframes kay {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* Gramaj kaydırıcısı: yerleşik görünüm koyu zeminde okunmuyor, iz ve topuz elle çizilir. */
+.gramaj-kaydirici {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  height: 2rem;
+  cursor: pointer;
+}
+.gramaj-kaydirici::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(251 247 238 / 0.16);
+}
+.gramaj-kaydirici::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(251 247 238 / 0.16);
+}
+.gramaj-kaydirici::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -10px;
+  border-radius: 999px;
+  background: var(--color-turuncu);
+  border: 3px solid var(--color-krem);
+  box-shadow: 0 6px 18px rgb(9 20 5 / 0.5);
+}
+.gramaj-kaydirici::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--color-krem);
+  border-radius: 999px;
+  background: var(--color-turuncu);
+  box-shadow: 0 6px 18px rgb(9 20 5 / 0.5);
+}
+
+/* Kenardan kenara fotoğraf sahneleri. Görsel serbest, metin satırı kontrollü. */
+.foto-sahne {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 82svh;
+  overflow: clip;
+  background: var(--color-yesil-koyu);
+  color: var(--color-krem);
+}
+.foto-sahne--hero { min-height: 100svh; }
+.foto-sahne__gorsel, .foto-sahne__perde { position: absolute; inset: 0; }
+.foto-sahne__gorsel picture { display: block; width: 100%; height: 100%; }
+.foto-sahne__gorsel img { width: 100%; height: 100%; object-fit: cover; }
+.foto-sahne__perde {
+  background: linear-gradient(90deg, rgb(6 20 13 / .88) 0%, rgb(6 20 13 / .72) 30%, rgb(6 20 13 / .22) 63%, rgb(6 20 13 / .04) 100%),
+    linear-gradient(180deg, rgb(6 20 13 / .55), transparent 24%, transparent 76%, rgb(6 20 13 / .35));
+}
+.foto-sahne--sag .foto-sahne__perde {
+  background: linear-gradient(270deg, rgb(6 20 13 / .90), rgb(6 20 13 / .7) 32%, rgb(6 20 13 / .15) 70%);
+}
+.foto-sahne__alan { position: relative; z-index: 1; width: 100%; padding: clamp(5rem, 9vh, 8rem) clamp(1.25rem, 5.5vw, 8rem); }
+.foto-sahne--hero .foto-sahne__alan { padding-top: max(9rem, 16vh); padding-bottom: max(5rem, 10vh); }
+.foto-sahne__icerik { max-width: 38rem; }
+.foto-sahne--sag .foto-sahne__icerik { margin-left: auto; }
+.foto-sahne--genis .foto-sahne__icerik { max-width: 1280px; margin-inline: auto; }
+.foto-sahne--genis .foto-sahne__perde { background: rgb(6 20 13 / .78); }
+.foto-sahne h1 { font-size: clamp(2.65rem, 4.2vw, 5.6rem); line-height: 1.04; letter-spacing: -.045em; }
+.foto-sahne p { text-shadow: 0 1px 12px rgb(0 0 0 / .12); }
+@media (max-width: 767px) {
+  .foto-sahne { min-height: 80svh; align-items: flex-end; }
+  .foto-sahne--hero { min-height: 100svh; }
+  .foto-sahne__perde, .foto-sahne--sag .foto-sahne__perde {
+    background: linear-gradient(180deg, rgb(6 20 13 / .24), rgb(6 20 13 / .48) 25%, rgb(6 20 13 / .90) 70%);
+  }
+  .foto-sahne__alan { padding-block: 7rem 4rem; }
+  .foto-sahne--hero .foto-sahne__alan { padding-block: 10rem 4rem; }
+  .foto-sahne__icerik { max-width: 100%; }
+}

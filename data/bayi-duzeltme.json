@@ -1,0 +1,9 @@
+{
+ "_not": "Kaynak sayfada ad ile adres aynı satıra yapışmış birkaç kayıt var; ayırıcı otomatik bulunamadığında doğru bölme buraya elle yazılır. Yalnız kaynakta yazan metin yeniden düzenlenir, bilgi eklenmez. Anahtar: bayiler.json içindeki id.",
+
+ "ankara-e8ee8172": { "ilce": "Elmadağ", "ad": "Dursun Arsln" },
+ "ankara-87019cff": { "ad": "Yeliz Erseymen", "adres": "Gümüş Pala Mah. Taşel Cad. No:1/A" },
+ "bitlis-3b5c5d25": { "ad": "Hüsnü Ceylan", "adres": "Beş Minare Mahallesi 1373 Sokak Ticaret Merkezi No:1 İç Kapı No:4" },
+ "denizli-655ba391": { "ad": "Yeliz Durak", "adres": "Hacı Kaplanlar Mah. Hürriyet Cad. Caner Apt. No:60/A" },
+ "konya-03711452": { "ilce": "Akşehir", "ad": "İrfan Çetin" }
+}

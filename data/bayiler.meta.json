@@ -1,0 +1,170 @@
+{
+ "cekim": "2026-09-03T07:56:30.117Z",
+ "kaynaklar": [
+  "https://antepcigkofte.tr/adana/",
+  "https://antepcigkofte.tr/afyon/",
+  "https://antepcigkofte.tr/amasya/",
+  "https://antepcigkofte.tr/ankara/",
+  "https://antepcigkofte.tr/antalya/",
+  "https://antepcigkofte.tr/aydin/",
+  "https://antepcigkofte.tr/bitlis/",
+  "https://antepcigkofte.tr/bursa/",
+  "https://antepcigkofte.tr/denizli/",
+  "https://antepcigkofte.tr/diyarbakir/",
+  "https://antepcigkofte.tr/eskisehir/",
+  "https://antepcigkofte.tr/gaziantep/",
+  "https://antepcigkofte.tr/hatay/",
+  "https://antepcigkofte.tr/mersin/",
+  "https://antepcigkofte.tr/kars/",
+  "https://antepcigkofte.tr/kayseri/",
+  "https://antepcigkofte.tr/konya/",
+  "https://antepcigkofte.tr/manisa/",
+  "https://antepcigkofte.tr/kahramanmaras/",
+  "https://antepcigkofte.tr/mardin/",
+  "https://antepcigkofte.tr/mugla/",
+  "https://antepcigkofte.tr/nevsehir/",
+  "https://antepcigkofte.tr/tokat/",
+  "https://antepcigkofte.tr/aksaray/",
+  "https://antepcigkofte.tr/karaman/"
+ ],
+ "toplam": 118,
+ "iller": {
+  "adana": 1,
+  "afyon": 1,
+  "amasya": 2,
+  "ankara": 6,
+  "antalya": 1,
+  "aydin": 2,
+  "bitlis": 1,
+  "bursa": 2,
+  "denizli": 2,
+  "diyarbakir": 1,
+  "eskisehir": 2,
+  "gaziantep": 1,
+  "hatay": 2,
+  "mersin": 4,
+  "kars": 1,
+  "kayseri": 2,
+  "konya": 71,
+  "manisa": 1,
+  "kahramanmaras": 1,
+  "mardin": 1,
+  "mugla": 1,
+  "nevsehir": 1,
+  "tokat": 4,
+  "aksaray": 3,
+  "karaman": 4
+ },
+ "uyarilar": [
+  {
+   "id": "bursa-ddbe3ee3",
+   "kod": "ADRES_YOK",
+   "ham": "UĞURCAN TİNAZ | T. 538 230 44 98"
+  },
+  {
+   "id": "konya-bdd489bd",
+   "kod": "TEL_YOK",
+   "ham": "SELÇUKLU-İSMAİL MERMUT | MALAZGİRT MAH.MÜNEVVER SOK.HİCRET CAMİ 1-E-1"
+  },
+  {
+   "id": "konya-636badca",
+   "kod": "TEL_YOK",
+   "ham": "MERAM-ALİ BOZBURUN | KOZAĞAÇ MAH.NAKIŞLAR SOK.NO:14/10"
+  },
+  {
+   "id": "konya-b4b6376c",
+   "kod": "ADRES_YOK",
+   "ham": "SELÇUKLU-PORTAKAL MARKET | T. 0505 042 79 81"
+  },
+  {
+   "id": "konya-60ae8cf6",
+   "kod": "ADRES_YOK",
+   "ham": "SELÇUKLU-MURAT BABACAN | T. 0332 2653509"
+  },
+  {
+   "id": "konya-a2d1831a",
+   "kod": "TEL_YOK",
+   "ham": "KARATAY-MERVE KEMER | KEYKUBAT MAH.KARAKAYIŞ CAD.NOL:100/A | T."
+  },
+  {
+   "id": "konya-2c74175b",
+   "kod": "ADRES_YOK",
+   "ham": "SELÇUKLU-TUĞÇE BÖREK EVİ | T. 0507 668 08 31"
+  },
+  {
+   "id": "konya-4fb602a1",
+   "kod": "ADRES_YOK",
+   "ham": "LADİK-ERTUĞRUL ÖZ | LADİK/KONYA | T. 0553 071 83 32"
+  },
+  {
+   "id": "konya-0125f898",
+   "kod": "TEL_YOK",
+   "ham": "SELÇUKLU-ERHAN KORKMAZ | HANAYBAŞI MAH. ALEMDAR CAD. NO: 89 B | T."
+  },
+  {
+   "id": "konya-416b2671",
+   "kod": "ADRES_YOK",
+   "ham": "EREĞLİ-MUSTAFA SAĞLAM | EREĞLİ/KONYA | T. 543 410 60 73"
+  },
+  {
+   "id": "konya-803ed88e",
+   "kod": "TEL_YOK",
+   "ham": "CİHANBEYLİ-SEMA NUR UÇAR | KÖPRÜ BAŞI MAH.KONYA CAD.NO:120 | T."
+  },
+  {
+   "id": "konya-63bf2aea",
+   "kod": "TEL_YOK",
+   "ham": "SELÇUKLU-EMİN BEY | T."
+  },
+  {
+   "id": "konya-63bf2aea",
+   "kod": "ADRES_YOK",
+   "ham": "SELÇUKLU-EMİN BEY | T."
+  },
+  {
+   "id": "konya-37986cec",
+   "kod": "ADRES_YOK",
+   "ham": "SELÇUKLU-TAHSİN EMEKLİ | T. 551 240 05 26"
+  },
+  {
+   "id": "konya-048db463",
+   "kod": "ADRES_YOK",
+   "ham": "LADİK-CEMAL BEY | LADİK/KONYA | T. 544 838 24 33"
+  },
+  {
+   "id": "konya-a060c84e",
+   "kod": "ADRES_YOK",
+   "ham": "ÇUMRA-FADİME DENECİ | ÇUMRA /KONYA | T. 0553 589 25 08"
+  },
+  {
+   "id": "ankara-e8ee8172",
+   "kod": "TEKRAR",
+   "ham": "Dursun Arsln · 0535 969 10 89 · Öncebeci Mahallesi Dedeefendicaddesi No 1/B"
+  },
+  {
+   "id": "ankara-47236fef",
+   "kod": "TEKRAR",
+   "ham": "Çiler Artukoğlu · 0535 969 10 89 · Öncebeci Mahallesi Dedeefendicaddesi No 1/B"
+  },
+  {
+   "id": "bursa-ddbe3ee3",
+   "kod": "TEKRAR",
+   "ham": "Uğurcan Tinaz · 0538 230 44 98 · "
+  },
+  {
+   "id": "bursa-faf275e5",
+   "kod": "TEKRAR",
+   "ham": "Kadriye Karabacak · 0538 230 44 98 · Küçükbalıklı Mah. Ali Galip Yaldız Cad. No:89/A"
+  },
+  {
+   "id": "konya-33f70c18",
+   "kod": "TEKRAR",
+   "ham": "Abdullah Öztürk · 0543 410 60 73 · Güneysınır-Konya"
+  },
+  {
+   "id": "konya-416b2671",
+   "kod": "TEKRAR",
+   "ham": "Mustafa Sağlam · 0543 410 60 73 · "
+  }
+ ]
+}

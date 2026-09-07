@@ -1,0 +1,58 @@
+# 301 YONLENDIRMELERI - Netlify / Cloudflare Pages bicimi.
+# Site statik export; gercek 301 yalniz barindirma katmaninda olur.
+# Bu dosya baska barindiricilarda etkisizdir, zarar vermez.
+#
+# Kaynak: https://antepcigkofte.tr/wp-sitemap-posts-page-1.xml (03.09.2026 cekildi).
+# Asagidaki her yol o sitemap'te GERCEKTEN var; tahminle kural yazilmadi.
+
+# --- Ana rotalar ---
+/basvuru              /franchise#basvuru      301!
+/basvuru/*            /franchise#basvuru      301!
+/kurumsal             /hakkimizda             301!
+/kurumsal/*           /hakkimizda             301!
+/bayilerimiz          /subeler                301!
+/bayilerimiz/*        /subeler                301!
+
+# Eski sitenin yer tutucu sayfalari. /guncelleniyor eski menude hem BASVURU FORMU hem
+# En Yakin Bayi baglantisinin gittigi yerdi: tek niyeti yok, en guvenli hedef ana sayfa.
+/guncelleniyor        /                       301!
+/cok-yakinda          /                       301!
+/anket                /                       301!
+
+# --- 25 il sayfasi (eski sitedeki bayi listeleri) -> o ilin sube listesi ---
+/adana                /subeler/?il=1          301!
+/afyon                /subeler/?il=3          301!
+/aksaray              /subeler/?il=68         301!
+/amasya               /subeler/?il=5          301!
+/ankara               /subeler/?il=6          301!
+/antalya              /subeler/?il=7          301!
+/aydin                /subeler/?il=9          301!
+/bitlis               /subeler/?il=13         301!
+/bursa                /subeler/?il=16         301!
+/denizli              /subeler/?il=20         301!
+/diyarbakir           /subeler/?il=21         301!
+/eskisehir            /subeler/?il=26         301!
+/gaziantep            /subeler/?il=27         301!
+/hatay                /subeler/?il=31         301!
+/kahramanmaras        /subeler/?il=46         301!
+/karaman              /subeler/?il=70         301!
+/kars                 /subeler/?il=36         301!
+/kayseri              /subeler/?il=38         301!
+/konya                /subeler/?il=42         301!
+/manisa               /subeler/?il=45         301!
+/mardin               /subeler/?il=47         301!
+/mersin               /subeler/?il=33         301!
+/mugla                /subeler/?il=48         301!
+/nevsehir             /subeler/?il=50         301!
+/tokat                /subeler/?il=60         301!
+
+# --- 5 hukuki sayfa -> tek KVKK sayfasi ---
+/kvkk-politikasi      /kvkk/                  301!
+/aydinlatma-metni     /kvkk/                  301!
+/gizlilik-politikasi  /kvkk/                  301!
+/kvkk-basvuru-formu   /kvkk/                  301!
+/iletisim-izni        /kvkk/                  301!
+
+# --- Yonlendirilmeyenler ---
+# 15 Ingilizce tema demo sayfasi (lorem ipsum): karsiligi yok, 404 dogru sinyaldir.
+# antepcigkofte.com olu alan adi: barindirma degil DNS isi, marka ile cozulecek.

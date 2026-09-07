@@ -1,0 +1,20 @@
+{
+ "_not": "Kaynak sayfada adresler tümü büyük harf ve Türkçe karakterler kısmen düşmüş (ATATURK, HUZUREVLERI, KURTULUS). Küçük harfe çevirince 'ı/i' ayrımı bozuluyor. Bu harita YALNIZCA genel adres sözcüklerinin doğru Türkçe yazımını geri koyar; kişi adlarına dokunulmaz, hiçbir bilgi eklenmez. Anahtar: kaynaktaki büyük harfli sözcük.",
+ "ATATURK": "Atatürk",
+ "AYDOGDU": "Aydoğdu",
+ "EYUPSULTAN": "Eyüpsultan",
+ "FERITPASA": "Feritpaşa",
+ "FETIH": "Fetih",
+ "GAZI": "Gazi",
+ "GIRIS": "Giriş",
+ "GIRISLER": "Girişler",
+ "HATIP": "Hatip",
+ "HUZUREVLERI": "Huzurevleri",
+ "IS": "İş",
+ "ISLAHIYE": "İslahiye",
+ "ISLAHİYE": "İslahiye",
+ "KURTULUS": "Kurtuluş",
+ "MERCIDABIK": "Mercidabık",
+ "PALMIYE": "Palmiye",
+ "TÜRKES": "Türkeş"
+}
