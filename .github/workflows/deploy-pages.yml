@@ -1,0 +1,50 @@
+name: GitHub Pages'a yayinla
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kaynak kodunu al
+        uses: actions/checkout@v6
+
+      - name: Node.js kur
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Bagimliliklari kur
+        run: npm ci
+
+      - name: Statik siteyi olustur
+        run: npx next build --webpack
+
+      - name: GitHub Pages'i hazirla
+        uses: actions/configure-pages@v5
+
+      - name: Site dosyalarini yukle
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+
+      - name: Siteyi yayinla
+        id: deployment
+        uses: actions/deploy-pages@v4
